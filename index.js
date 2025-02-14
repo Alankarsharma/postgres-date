@@ -95,7 +95,11 @@ class PGDateParser {
       return null
     }
 
-    const char = this.dateString.charCodeAt(this.pos)
+    var char = this.dateString.charCodeAt(this.pos)
+    if (char === CHAR_CODE_SPACE) {
+      this.pos += 1
+      char = this.dateString.charCodeAt(this.pos)
+    }
     if (char === CHAR_CODE_PLUS) {
       this.pos += 1
       return 1
